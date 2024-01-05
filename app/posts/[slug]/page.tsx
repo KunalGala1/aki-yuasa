@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { slug: string } }) {
       <main>
         {post && (
           <>
-            <div className='max-w-96 mx-auto py-16 space-y-4'>
+            <div className='max-w-96 mx-auto py-16 space-y-4 p-4'>
               <h1 className='font-extrabold text-4xl'>{post.title}</h1>
               <p className='text-xl'>{post.description}</p>
             </div>
@@ -47,7 +47,7 @@ export default function Page({ params }: { params: { slug: string } }) {
               className='w-full'
             ></Image>
             <p className='px-4 pt-1 text-gray-400'>{post.image.alt}</p>
-            <section className='max-w-96 mx-auto py-16 space-y-4'>
+            <section className='max-w-96 mx-auto py-16 space-y-4 p-4'>
               <div className='font-sans text-xs text-slate-600'>
                 <h2 className='font-bold'>By {post.author}</h2>
                 <span>
