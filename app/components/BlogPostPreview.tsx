@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 type BlogPostPreviewProps = {
-  _id: string;
   title: string;
   slug: string;
   description: string;
@@ -25,7 +24,6 @@ type BlogPostPreviewProps = {
 };
 
 const BlogPostPreview = ({
-  _id,
   title,
   slug,
   description,
@@ -42,7 +40,7 @@ const BlogPostPreview = ({
         </Link>
         <div className='flex gap-2'>
           {categories.map((category) => (
-            <Category id={category._id}>{category.title}</Category>
+            <Category key={category._id}>{category.title}</Category>
           ))}
         </div>
       </div>

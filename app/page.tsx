@@ -56,7 +56,7 @@ const HomePage = () => {
         <div className='flex justify-center gap-8 m-8 flex-wrap'>
           {posts.map((post) => (
             <BlogPostPreview
-              _id={post._id}
+              key={post._id}
               title={post.title}
               slug={post.slug}
               categories={post.categories}
