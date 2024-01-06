@@ -34,3 +34,15 @@ export type PostType = {
   publishedAt: string;
   body: PortableTextBlock[];
 };
+
+export type ProfileType = {
+  _id: string;
+  name: string;
+  headline: string;
+  image: {
+    alt: string;
+    src: string;
+  };
+  introduction: string;
+  fullBio: PortableTextBlock[];
+};

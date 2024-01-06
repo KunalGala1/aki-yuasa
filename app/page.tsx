@@ -1,7 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
 import { getPostPreviews } from '@/sanity/sanity.query';
+import { getProfile } from '@/sanity/sanity.query';
 import type { PostPreviewType } from '@/types';
+import type { ProfileType } from '@/types';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -9,6 +11,7 @@ import Header from './components/Header';
 import BlogPostPreview from './components/BlogPostPreview';
 
 const HomePage = () => {
+  const [profile, setProfile] = useState<ProfileType>();
   const [posts, setPosts] = useState<PostPreviewType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<boolean>(false);
@@ -18,6 +21,8 @@ const HomePage = () => {
       try {
         const posts: PostPreviewType[] = await getPostPreviews();
         setPosts(posts);
+        const profile: ProfileType = await getProfile();
+        setProfile(profile);
         setIsLoading(false);
         console.log(posts);
       } catch (error) {
@@ -41,15 +46,8 @@ const HomePage = () => {
           ></Image>
         </Link>
         <div className='absolute bottom-0 left-0 m-4 p-4 bg-slate-50/75 rounded sm:w-1/2 space-y-4'>
-          <Header>Welcome to my Blog!</Header>
-          <p>
-            I&apos;m a freshman enrolled at Stanford University playing for the
-            varsity women&apos;s soccer team. Apart from soccer, I like
-            traveling, cooking, making art, and learning new things. I was born
-            in Oakland and have lived in Hokkaido, Vermont, and Munich. Now
-            I&apos;m back in the Bay Area, diving headfirst into a new
-            adventure.
-          </p>
+          <Header>{profile && profile.headline}</Header>
+          <p>{profile && profile.introduction}</p>
         </div>
       </section>
       <section>

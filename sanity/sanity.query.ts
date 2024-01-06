@@ -44,3 +44,16 @@ export const getPostBySlug = async (slug: string) => {
     { slug }
   );
 };
+
+export const getProfile = async () => {
+  return client.fetch(
+    groq`*[_type == 'profile'][0]{
+            _id,
+            name,
+            headline,
+            image {alt, "src": asset->url},
+            introduction,
+            fullBio
+        }`
+  );
+};
